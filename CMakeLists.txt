@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(untitled main.cpp
         array.cpp
-        array.h)
+        array.h
+        stack.cpp
+        stack.h)
