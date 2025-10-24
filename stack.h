@@ -18,6 +18,7 @@ public:
     void push(Array value);
     Array pop();
     Array check(unsigned index);
+    void delete_element(unsigned index);
     unsigned get_length();
     bool is_empty();
 };

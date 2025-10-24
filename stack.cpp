@@ -40,6 +40,17 @@ Array Stack::check(unsigned index) {
     return a->val;
 }
 
+void Stack::delete_element(unsigned index) {
+    List* curr=top;
+    List* prevv;
+    for (int i=0;i<index;i++) {
+        prevv=curr;
+        curr=curr->prev;
+    }
+    prevv->prev=curr->prev;
+    delete curr;
+}
+
 unsigned Stack::get_length() {
     return length;
 }

@@ -3,7 +3,7 @@
 //
 
 #include "array.h"
-
+#include <iostream>
 #include <stdexcept>
 
 Array::Array() {
@@ -24,6 +24,12 @@ Array::Array(const Array &other) {
 
 Array::~Array() {
     delete[] data;
+}
+
+void Array::print() {
+    for (int i=0;i<length;i++) {
+        std::cout<<data[i]<<' ';
+    }
 }
 
 int Array::get_length() {
@@ -60,6 +66,23 @@ int Array::binary_search(int searching) {
         else if (data[mid] < searching) low = mid;
         else high = mid;
     }
+}
+
+int Array::exponential_search(int searching) {
+    if (data[0] == searching) return 0;
+    int i = 1;
+    while (i < length && data[i] <= searching) i *= 2;
+    int left = i / 2;
+    int right = std::min(i, length);
+    Array a;
+    int range_length = right - left;
+    a.data = new int[range_length];
+    a.length = range_length;
+    for (int j = 0; j < range_length; j++) {
+        a.data[j] = data[left + j];
+    }
+    int res = a.binary_search(searching);
+    return res+left;
 }
 
 void Array::binary_add_element(int value) {

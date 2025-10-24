@@ -12,9 +12,11 @@ private:
     int *data;
     int binary_search(int searching);
 public:
+    int exponential_search(int searching);
     Array();
     Array(const Array& other);
     ~Array();
+    void print();
     int get_length();
     void revers();
     void delete_first();
