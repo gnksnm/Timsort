@@ -69,37 +69,22 @@ void merge(Array& arr1,Array& arr2) { //arr1<arr2, выход слияния в 
 }
 
 Array do_run(Array &arr, unsigned minrun) {
-    bool is_up;
-    unsigned i = 0;
+    if (arr.get_length() == 0) return Array();
+    bool is_up = true;
+    if (arr.get_length() > 1 && arr[0] > arr[1]) is_up = false;
     Array run;
-    if (arr.get_length() == 0) return run;
-    if (arr.get_length() > 1 && arr[0] < arr[1]) {
-        is_up = 1;
+    run.push_element(arr[0]);
+    unsigned i = 0;
+    while (i + 1 < arr.get_length()) {
+        if ((arr[i] <= arr[i+1]) == is_up) {
+            i++;
+            run.push_element(arr[i]);
+        } else break;
     }
-    else is_up = 0;
-    bool real = is_up;
-    run.push_element(arr[i]);
-    while (is_up == real && (arr.get_length()  > i + 1)) {
-        i++;
-        run.push_element(arr[i]);
-        if (arr[i] < arr[i+1]) {
-            real=1;
-        }
-        else if (arr[i]==arr[i+1]) {
-            real=is_up;
-        }
-        else real=0;
+    if (!is_up) run.revers();
+    while (run.get_length() < minrun && arr.get_length() > run.get_length()) {
+        run.binary_add_element(arr[run.get_length()]);
     }
-    if (!(is_up)) {
-        run.revers();
-    }
-    unsigned remaining = arr.get_length() - (i + 1); // сколько элементов осталось
-    unsigned to_add = std::min(minrun - run.get_length(), remaining);
-
-    for (unsigned j = 0; j < to_add; j++) {
-        run.binary_add_element(arr[i + 1 + j]);
-    }
-    i += to_add;
     for (unsigned j = 0; j < run.get_length(); j++) {
         arr.delete_first();
     }
@@ -150,6 +135,7 @@ int main() {
             Array run=do_run(a,minrun);
             stack.push(run);
             collapse=is_collapse(stack);
+
         }
 
         while (collapse) {
