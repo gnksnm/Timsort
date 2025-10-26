@@ -29,7 +29,12 @@ Array::~Array() {
 void Array::print() {
     for (int i=0;i<length;i++) {
         std::cout<<data[i]<<' ';
+        if ((i + 1) % 20 == 0) std::cout << std::endl;
     }
+}
+
+int * Array::get_data() {
+    return data;
 }
 
 int Array::get_length() {
@@ -51,6 +56,12 @@ void Array::delete_first() {
     }
     data=a;
     length--;
+}
+
+void Array::delete_first_n(int n) {
+    for (int i=0;i<n;i++) {
+        delete_first();
+    }
 }
 
 int Array::binary_search(int searching) {

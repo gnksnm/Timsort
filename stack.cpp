@@ -1,7 +1,3 @@
-//
-// Created by Совсем не Илья on 22.10.2025.
-//
-
 #include "stack.h"
 
 Stack::Stack() {
@@ -32,7 +28,7 @@ Array Stack::pop() {
     return v;
 }
 
-Array Stack::check(unsigned index) {
+Array &Stack::check(unsigned index) {
     List*a=top;
     for (int i=0;i<index;i++) {
         a=a->prev;
@@ -48,6 +44,7 @@ void Stack::delete_element(unsigned index) {
         curr=curr->prev;
     }
     prevv->prev=curr->prev;
+    length--;
     delete curr;
 }
 

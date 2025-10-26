@@ -1,6 +1,3 @@
-//
-// Created by Совсем не Илья on 22.10.2025.
-//
 #include "array.h"
 #ifndef UNTITLED_STACK_H
 #define UNTITLED_STACK_H
@@ -17,7 +14,8 @@ public:
     Stack();
     void push(Array value);
     Array pop();
-    Array check(unsigned index);
+
+    Array &check(unsigned index);
     void delete_element(unsigned index);
     unsigned get_length();
     bool is_empty();

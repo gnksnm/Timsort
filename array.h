@@ -17,9 +17,11 @@ public:
     Array(const Array& other);
     ~Array();
     void print();
+    int* get_data();
     int get_length();
     void revers();
     void delete_first();
+    void delete_first_n(int n);
     void add_element(unsigned index, int value);
     void push_element(int value);
     void binary_add_element(int value);
