@@ -103,9 +103,9 @@ Array do_run(Array &arr, unsigned minrun) {
     for (unsigned j = 0; j < run.get_length(); j++) {
         arr.delete_first();
     }
-
     return run;
 }
+
 bool is_collapse(Stack stack) {
     unsigned n = stack.get_length();
     if (n >= 3) {
