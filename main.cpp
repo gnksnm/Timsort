@@ -66,8 +66,6 @@ void merge(Array& arr1,Array& arr2) { //arr1<arr2, выход слияния в 
         arr1.push_element(arr2[0]);
         arr2.delete_first();
     }
-
-   //arr1.print();
 }
 
 Array do_run(Array &arr, unsigned minrun) {
@@ -92,10 +90,6 @@ Array do_run(Array &arr, unsigned minrun) {
         }
         else real=0;
     }
-  //  if (arr.get_length()-i-1==1) {
-  //      run.push_element(arr[++i]);
-  //  }
-   // else i++;
     if (!(is_up)) {
         run.revers();
     }
@@ -183,7 +177,6 @@ int main() {
             merge(*arr1ptr,*arr2ptr);
             stack.delete_element(del);
             collapse=is_collapse(stack);
-           // stack.check(0).print();
         }
     }
     while (stack.get_length()>1) {
